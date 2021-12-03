@@ -457,8 +457,8 @@ void main(void){
 		for (int i = 0; i <sizeof(str) -1; i++){
  800054c:	2e07      	cmp	r6, #7
  800054e:	d1f7      	bne.n	8000540 <main+0x50>
-		k_msleep(10);
- 8000550:	200a      	movs	r0, #10
+		k_msleep(100);
+ 8000550:	2064      	movs	r0, #100	; 0x64
  8000552:	f002 fa78 	bl	8002a46 <k_msleep.isra.0>
 	while(1){
  8000556:	3501      	adds	r5, #1
