@@ -1,0 +1,4 @@
+ 
+if LCD
+rsource "LCDSRC/Kconfig"
+endif #LCD

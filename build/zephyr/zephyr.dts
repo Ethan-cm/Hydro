@@ -1,0 +1,1465 @@
+/dts-v1/;
+
+/ {
+	#address-cells = < 0x1 >;
+	#size-cells = < 0x1 >;
+	model = "STMicroelectronics STM32F411E-DISCO board";
+	compatible = "st,stm32f411e-disco";
+	chosen {
+		zephyr,flash-controller = &flash;
+		zephyr,console = &usart2;
+		zephyr,shell-uart = &usart2;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+	aliases {
+		led0 = &orange_led_3;
+		led1 = &green_led_4;
+		led2 = &red_led_5;
+		led3 = &blue_led_6;
+		sw0 = &user_button;
+		pwm-led0 = &green_pwm_led;
+		pwm-led1 = &orange_pwm_led;
+		pwm-led2 = &red_pwm_led;
+		pwm-led3 = &blue_pwm_led;
+	};
+	soc {
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x1 >;
+		compatible = "simple-bus";
+		interrupt-parent = < &nvic >;
+		ranges;
+		nvic: interrupt-controller@e000e100 {
+			#address-cells = < 0x1 >;
+			compatible = "arm,v7m-nvic";
+			reg = < 0xe000e100 0xc00 >;
+			interrupt-controller;
+			#interrupt-cells = < 0x2 >;
+			arm,num-irq-priority-bits = < 0x4 >;
+			phandle = < 0x1 >;
+		};
+		systick: timer@e000e010 {
+			compatible = "arm,armv7m-systick";
+			reg = < 0xe000e010 0x10 >;
+		};
+		flash: flash-controller@40023c00 {
+			compatible = "st,stm32-flash-controller", "st,stm32f4-flash-controller";
+			label = "FLASH_CTRL";
+			reg = < 0x40023c00 0x400 >;
+			interrupts = < 0x4 0x0 >;
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x1 >;
+			flash0: flash@8000000 {
+				compatible = "st,stm32-nv-flash", "soc-nv-flash";
+				label = "FLASH_STM32";
+				write-block-size = < 0x1 >;
+				max-erase-time = < 0xfa0 >;
+				reg = < 0x8000000 0x80000 >;
+			};
+		};
+		rcc: rcc@40023800 {
+			compatible = "st,stm32-rcc";
+			#clock-cells = < 0x2 >;
+			reg = < 0x40023800 0x400 >;
+			clocks = < &pll >;
+			clock-frequency = < 0x5b8d800 >;
+			ahb-prescaler = < 0x1 >;
+			apb1-prescaler = < 0x2 >;
+			apb2-prescaler = < 0x1 >;
+			phandle = < 0x3 >;
+		};
+		exti: interrupt-controller@40013c00 {
+			compatible = "st,stm32-exti";
+			interrupt-controller;
+			#interrupt-cells = < 0x1 >;
+			reg = < 0x40013c00 0x400 >;
+		};
+		pinctrl: pin-controller@40020000 {
+			compatible = "st,stm32-pinctrl";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x1 >;
+			reg = < 0x40020000 0x2000 >;
+			gpioa: gpio@40020000 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40020000 0x400 >;
+				clocks = < &rcc 0x0 0x1 >;
+				label = "GPIOA";
+				phandle = < 0x15 >;
+			};
+			gpiob: gpio@40020400 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40020400 0x400 >;
+				clocks = < &rcc 0x0 0x2 >;
+				label = "GPIOB";
+			};
+			gpioc: gpio@40020800 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40020800 0x400 >;
+				clocks = < &rcc 0x0 0x4 >;
+				label = "GPIOC";
+			};
+			gpiod: gpio@40020c00 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40020c00 0x400 >;
+				clocks = < &rcc 0x0 0x8 >;
+				label = "GPIOD";
+				status = "okay";
+				phandle = < 0x13 >;
+			};
+			gpioe: gpio@40021000 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40021000 0x400 >;
+				clocks = < &rcc 0x0 0x10 >;
+				label = "GPIOE";
+				phandle = < 0x8 >;
+			};
+			gpiof: gpio@40021400 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40021400 0x400 >;
+				clocks = < &rcc 0x0 0x20 >;
+				label = "GPIOF";
+			};
+			gpiog: gpio@40021800 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40021800 0x400 >;
+				clocks = < &rcc 0x0 0x40 >;
+				label = "GPIOG";
+			};
+			gpioh: gpio@40021c00 {
+				compatible = "st,stm32-gpio";
+				gpio-controller;
+				#gpio-cells = < 0x2 >;
+				reg = < 0x40021c00 0x400 >;
+				clocks = < &rcc 0x0 0x80 >;
+				label = "GPIOH";
+			};
+			adc1_in0_pa0: adc1_in0_pa0 {
+				pinmux = < 0x10 >;
+			};
+			adc1_in1_pa1: adc1_in1_pa1 {
+				pinmux = < 0x110 >;
+			};
+			adc1_in2_pa2: adc1_in2_pa2 {
+				pinmux = < 0x210 >;
+			};
+			adc1_in3_pa3: adc1_in3_pa3 {
+				pinmux = < 0x310 >;
+			};
+			adc1_in4_pa4: adc1_in4_pa4 {
+				pinmux = < 0x410 >;
+			};
+			adc1_in5_pa5: adc1_in5_pa5 {
+				pinmux = < 0x510 >;
+			};
+			adc1_in6_pa6: adc1_in6_pa6 {
+				pinmux = < 0x610 >;
+			};
+			adc1_in7_pa7: adc1_in7_pa7 {
+				pinmux = < 0x710 >;
+			};
+			adc1_in8_pb0: adc1_in8_pb0 {
+				pinmux = < 0x1010 >;
+			};
+			adc1_in9_pb1: adc1_in9_pb1 {
+				pinmux = < 0x1110 >;
+			};
+			adc1_in10_pc0: adc1_in10_pc0 {
+				pinmux = < 0x2010 >;
+			};
+			adc1_in11_pc1: adc1_in11_pc1 {
+				pinmux = < 0x2110 >;
+			};
+			adc1_in12_pc2: adc1_in12_pc2 {
+				pinmux = < 0x2210 >;
+			};
+			adc1_in13_pc3: adc1_in13_pc3 {
+				pinmux = < 0x2310 >;
+			};
+			adc1_in14_pc4: adc1_in14_pc4 {
+				pinmux = < 0x2410 >;
+			};
+			adc1_in15_pc5: adc1_in15_pc5 {
+				pinmux = < 0x2510 >;
+			};
+			i2c1_scl_pb6: i2c1_scl_pb6 {
+				pinmux = < 0x1604 >;
+				bias-pull-up;
+				drive-open-drain;
+				phandle = < 0x6 >;
+			};
+			i2c1_scl_pb8: i2c1_scl_pb8 {
+				pinmux = < 0x1804 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c2_scl_pb10: i2c2_scl_pb10 {
+				pinmux = < 0x1a04 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c3_scl_pa8: i2c3_scl_pa8 {
+				pinmux = < 0x804 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c1_sda_pb7: i2c1_sda_pb7 {
+				pinmux = < 0x1704 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c1_sda_pb9: i2c1_sda_pb9 {
+				pinmux = < 0x1904 >;
+				bias-pull-up;
+				drive-open-drain;
+				phandle = < 0x7 >;
+			};
+			i2c2_sda_pb3: i2c2_sda_pb3 {
+				pinmux = < 0x1309 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c2_sda_pb9: i2c2_sda_pb9 {
+				pinmux = < 0x1909 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c3_sda_pb4: i2c3_sda_pb4 {
+				pinmux = < 0x1409 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c3_sda_pb8: i2c3_sda_pb8 {
+				pinmux = < 0x1809 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2c3_sda_pc9: i2c3_sda_pc9 {
+				pinmux = < 0x2904 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			i2s1_ck_pa5: i2s1_ck_pa5 {
+				pinmux = < 0x505 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s1_ck_pb3: i2s1_ck_pb3 {
+				pinmux = < 0x1305 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s2_ck_pb10: i2s2_ck_pb10 {
+				pinmux = < 0x1a05 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s2_ck_pb13: i2s2_ck_pb13 {
+				pinmux = < 0x1d05 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s2_ck_pc7: i2s2_ck_pc7 {
+				pinmux = < 0x2705 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s2_ck_pd3: i2s2_ck_pd3 {
+				pinmux = < 0x3305 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s3_ck_pb3: i2s3_ck_pb3 {
+				pinmux = < 0x1306 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s3_ck_pb12: i2s3_ck_pb12 {
+				pinmux = < 0x1c07 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s3_ck_pc10: i2s3_ck_pc10 {
+				pinmux = < 0x2a06 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s4_ck_pb13: i2s4_ck_pb13 {
+				pinmux = < 0x1d06 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s4_ck_pe2: i2s4_ck_pe2 {
+				pinmux = < 0x4205 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s4_ck_pe12: i2s4_ck_pe12 {
+				pinmux = < 0x4c05 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s5_ck_pb0: i2s5_ck_pb0 {
+				pinmux = < 0x1006 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s5_ck_pe2: i2s5_ck_pe2 {
+				pinmux = < 0x4206 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s5_ck_pe12: i2s5_ck_pe12 {
+				pinmux = < 0x4c06 >;
+				slew-rate = "very-high-speed";
+			};
+			i2s1_sd_pa7: i2s1_sd_pa7 {
+				pinmux = < 0x705 >;
+			};
+			i2s1_sd_pb5: i2s1_sd_pb5 {
+				pinmux = < 0x1505 >;
+			};
+			i2s2_sd_pb15: i2s2_sd_pb15 {
+				pinmux = < 0x1f05 >;
+			};
+			i2s2_sd_pc3: i2s2_sd_pc3 {
+				pinmux = < 0x2305 >;
+			};
+			i2s3_sd_pb5: i2s3_sd_pb5 {
+				pinmux = < 0x1506 >;
+			};
+			i2s3_sd_pc12: i2s3_sd_pc12 {
+				pinmux = < 0x2c06 >;
+			};
+			i2s3_sd_pd6: i2s3_sd_pd6 {
+				pinmux = < 0x3605 >;
+			};
+			i2s4_sd_pa1: i2s4_sd_pa1 {
+				pinmux = < 0x105 >;
+			};
+			i2s4_sd_pe6: i2s4_sd_pe6 {
+				pinmux = < 0x4605 >;
+			};
+			i2s4_sd_pe14: i2s4_sd_pe14 {
+				pinmux = < 0x4e05 >;
+			};
+			i2s5_sd_pa10: i2s5_sd_pa10 {
+				pinmux = < 0xa06 >;
+			};
+			i2s5_sd_pb8: i2s5_sd_pb8 {
+				pinmux = < 0x1806 >;
+			};
+			i2s5_sd_pe6: i2s5_sd_pe6 {
+				pinmux = < 0x4606 >;
+			};
+			i2s5_sd_pe14: i2s5_sd_pe14 {
+				pinmux = < 0x4e06 >;
+			};
+			i2s1_ws_pa4: i2s1_ws_pa4 {
+				pinmux = < 0x405 >;
+			};
+			i2s1_ws_pa15: i2s1_ws_pa15 {
+				pinmux = < 0xf05 >;
+			};
+			i2s2_ws_pb9: i2s2_ws_pb9 {
+				pinmux = < 0x1905 >;
+			};
+			i2s2_ws_pb12: i2s2_ws_pb12 {
+				pinmux = < 0x1c05 >;
+			};
+			i2s3_ws_pa4: i2s3_ws_pa4 {
+				pinmux = < 0x406 >;
+			};
+			i2s3_ws_pa15: i2s3_ws_pa15 {
+				pinmux = < 0xf06 >;
+			};
+			i2s4_ws_pb12: i2s4_ws_pb12 {
+				pinmux = < 0x1c06 >;
+			};
+			i2s4_ws_pe4: i2s4_ws_pe4 {
+				pinmux = < 0x4405 >;
+			};
+			i2s4_ws_pe11: i2s4_ws_pe11 {
+				pinmux = < 0x4b05 >;
+			};
+			i2s5_ws_pb1: i2s5_ws_pb1 {
+				pinmux = < 0x1106 >;
+			};
+			i2s5_ws_pe4: i2s5_ws_pe4 {
+				pinmux = < 0x4406 >;
+			};
+			i2s5_ws_pe11: i2s5_ws_pe11 {
+				pinmux = < 0x4b06 >;
+			};
+			sdio_cmd_pa6: sdio_cmd_pa6 {
+				pinmux = < 0x60c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d1_pa8: sdio_d1_pa8 {
+				pinmux = < 0x80c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d2_pa9: sdio_d2_pa9 {
+				pinmux = < 0x90c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d0_pb4: sdio_d0_pb4 {
+				pinmux = < 0x140c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d3_pb5: sdio_d3_pb5 {
+				pinmux = < 0x150c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d0_pb7: sdio_d0_pb7 {
+				pinmux = < 0x170c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d4_pb8: sdio_d4_pb8 {
+				pinmux = < 0x180c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d5_pb9: sdio_d5_pb9 {
+				pinmux = < 0x190c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d7_pb10: sdio_d7_pb10 {
+				pinmux = < 0x1a0c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d6_pb14: sdio_d6_pb14 {
+				pinmux = < 0x1e0c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_ck_pb15: sdio_ck_pb15 {
+				pinmux = < 0x1f0c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d6_pc6: sdio_d6_pc6 {
+				pinmux = < 0x260c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d7_pc7: sdio_d7_pc7 {
+				pinmux = < 0x270c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d0_pc8: sdio_d0_pc8 {
+				pinmux = < 0x280c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d1_pc9: sdio_d1_pc9 {
+				pinmux = < 0x290c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d2_pc10: sdio_d2_pc10 {
+				pinmux = < 0x2a0c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_d3_pc11: sdio_d3_pc11 {
+				pinmux = < 0x2b0c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_ck_pc12: sdio_ck_pc12 {
+				pinmux = < 0x2c0c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			sdio_cmd_pd2: sdio_cmd_pd2 {
+				pinmux = < 0x320c >;
+				bias-pull-up;
+				slew-rate = "very-high-speed";
+			};
+			spi1_miso_pa6: spi1_miso_pa6 {
+				pinmux = < 0x605 >;
+				bias-pull-down;
+			};
+			spi1_miso_pb4: spi1_miso_pb4 {
+				pinmux = < 0x1405 >;
+				bias-pull-down;
+			};
+			spi2_miso_pb14: spi2_miso_pb14 {
+				pinmux = < 0x1e05 >;
+				bias-pull-down;
+			};
+			spi2_miso_pc2: spi2_miso_pc2 {
+				pinmux = < 0x2205 >;
+				bias-pull-down;
+			};
+			spi3_miso_pb4: spi3_miso_pb4 {
+				pinmux = < 0x1406 >;
+				bias-pull-down;
+			};
+			spi3_miso_pc11: spi3_miso_pc11 {
+				pinmux = < 0x2b06 >;
+				bias-pull-down;
+			};
+			spi4_miso_pa11: spi4_miso_pa11 {
+				pinmux = < 0xb06 >;
+				bias-pull-down;
+			};
+			spi4_miso_pe5: spi4_miso_pe5 {
+				pinmux = < 0x4505 >;
+				bias-pull-down;
+			};
+			spi4_miso_pe13: spi4_miso_pe13 {
+				pinmux = < 0x4d05 >;
+				bias-pull-down;
+			};
+			spi5_miso_pa12: spi5_miso_pa12 {
+				pinmux = < 0xc06 >;
+				bias-pull-down;
+			};
+			spi5_miso_pe5: spi5_miso_pe5 {
+				pinmux = < 0x4506 >;
+				bias-pull-down;
+			};
+			spi5_miso_pe13: spi5_miso_pe13 {
+				pinmux = < 0x4d06 >;
+				bias-pull-down;
+			};
+			spi1_mosi_pa7: spi1_mosi_pa7 {
+				pinmux = < 0x705 >;
+				bias-pull-down;
+			};
+			spi1_mosi_pb5: spi1_mosi_pb5 {
+				pinmux = < 0x1505 >;
+				bias-pull-down;
+			};
+			spi2_mosi_pb15: spi2_mosi_pb15 {
+				pinmux = < 0x1f05 >;
+				bias-pull-down;
+			};
+			spi2_mosi_pc3: spi2_mosi_pc3 {
+				pinmux = < 0x2305 >;
+				bias-pull-down;
+			};
+			spi3_mosi_pb5: spi3_mosi_pb5 {
+				pinmux = < 0x1506 >;
+				bias-pull-down;
+			};
+			spi3_mosi_pc12: spi3_mosi_pc12 {
+				pinmux = < 0x2c06 >;
+				bias-pull-down;
+			};
+			spi3_mosi_pd6: spi3_mosi_pd6 {
+				pinmux = < 0x3605 >;
+				bias-pull-down;
+			};
+			spi4_mosi_pa1: spi4_mosi_pa1 {
+				pinmux = < 0x105 >;
+				bias-pull-down;
+			};
+			spi4_mosi_pe6: spi4_mosi_pe6 {
+				pinmux = < 0x4605 >;
+				bias-pull-down;
+			};
+			spi4_mosi_pe14: spi4_mosi_pe14 {
+				pinmux = < 0x4e05 >;
+				bias-pull-down;
+			};
+			spi5_mosi_pa10: spi5_mosi_pa10 {
+				pinmux = < 0xa06 >;
+				bias-pull-down;
+			};
+			spi5_mosi_pb8: spi5_mosi_pb8 {
+				pinmux = < 0x1806 >;
+				bias-pull-down;
+			};
+			spi5_mosi_pe6: spi5_mosi_pe6 {
+				pinmux = < 0x4606 >;
+				bias-pull-down;
+			};
+			spi5_mosi_pe14: spi5_mosi_pe14 {
+				pinmux = < 0x4e06 >;
+				bias-pull-down;
+			};
+			spi1_nss_pa4: spi1_nss_pa4 {
+				pinmux = < 0x405 >;
+				bias-pull-up;
+			};
+			spi1_nss_pa15: spi1_nss_pa15 {
+				pinmux = < 0xf05 >;
+				bias-pull-up;
+			};
+			spi2_nss_pb9: spi2_nss_pb9 {
+				pinmux = < 0x1905 >;
+				bias-pull-up;
+			};
+			spi2_nss_pb12: spi2_nss_pb12 {
+				pinmux = < 0x1c05 >;
+				bias-pull-up;
+			};
+			spi3_nss_pa4: spi3_nss_pa4 {
+				pinmux = < 0x406 >;
+				bias-pull-up;
+			};
+			spi3_nss_pa15: spi3_nss_pa15 {
+				pinmux = < 0xf06 >;
+				bias-pull-up;
+			};
+			spi4_nss_pb12: spi4_nss_pb12 {
+				pinmux = < 0x1c06 >;
+				bias-pull-up;
+			};
+			spi4_nss_pe4: spi4_nss_pe4 {
+				pinmux = < 0x4405 >;
+				bias-pull-up;
+			};
+			spi4_nss_pe11: spi4_nss_pe11 {
+				pinmux = < 0x4b05 >;
+				bias-pull-up;
+			};
+			spi5_nss_pb1: spi5_nss_pb1 {
+				pinmux = < 0x1106 >;
+				bias-pull-up;
+			};
+			spi5_nss_pe4: spi5_nss_pe4 {
+				pinmux = < 0x4406 >;
+				bias-pull-up;
+			};
+			spi5_nss_pe11: spi5_nss_pe11 {
+				pinmux = < 0x4b06 >;
+				bias-pull-up;
+			};
+			spi1_sck_pa5: spi1_sck_pa5 {
+				pinmux = < 0x505 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi1_sck_pb3: spi1_sck_pb3 {
+				pinmux = < 0x1305 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi2_sck_pb10: spi2_sck_pb10 {
+				pinmux = < 0x1a05 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi2_sck_pb13: spi2_sck_pb13 {
+				pinmux = < 0x1d05 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi2_sck_pc7: spi2_sck_pc7 {
+				pinmux = < 0x2705 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi2_sck_pd3: spi2_sck_pd3 {
+				pinmux = < 0x3305 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi3_sck_pb3: spi3_sck_pb3 {
+				pinmux = < 0x1306 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi3_sck_pb12: spi3_sck_pb12 {
+				pinmux = < 0x1c07 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi3_sck_pc10: spi3_sck_pc10 {
+				pinmux = < 0x2a06 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi4_sck_pb13: spi4_sck_pb13 {
+				pinmux = < 0x1d06 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi4_sck_pe2: spi4_sck_pe2 {
+				pinmux = < 0x4205 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi4_sck_pe12: spi4_sck_pe12 {
+				pinmux = < 0x4c05 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi5_sck_pb0: spi5_sck_pb0 {
+				pinmux = < 0x1006 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi5_sck_pe2: spi5_sck_pe2 {
+				pinmux = < 0x4206 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			spi5_sck_pe12: spi5_sck_pe12 {
+				pinmux = < 0x4c06 >;
+				bias-pull-down;
+				slew-rate = "very-high-speed";
+			};
+			tim10_ch1_pb8: tim10_ch1_pb8 {
+				pinmux = < 0x1803 >;
+			};
+			tim1_ch1n_pa7: tim1_ch1n_pa7 {
+				pinmux = < 0x701 >;
+			};
+			tim1_ch1_pa8: tim1_ch1_pa8 {
+				pinmux = < 0x801 >;
+			};
+			tim1_ch2_pa9: tim1_ch2_pa9 {
+				pinmux = < 0x901 >;
+			};
+			tim1_ch3_pa10: tim1_ch3_pa10 {
+				pinmux = < 0xa01 >;
+			};
+			tim1_ch4_pa11: tim1_ch4_pa11 {
+				pinmux = < 0xb01 >;
+			};
+			tim1_ch2n_pb0: tim1_ch2n_pb0 {
+				pinmux = < 0x1001 >;
+			};
+			tim1_ch3n_pb1: tim1_ch3n_pb1 {
+				pinmux = < 0x1101 >;
+			};
+			tim11_ch1_pb9: tim11_ch1_pb9 {
+				pinmux = < 0x1903 >;
+			};
+			tim1_ch1n_pb13: tim1_ch1n_pb13 {
+				pinmux = < 0x1d01 >;
+			};
+			tim1_ch2n_pb14: tim1_ch2n_pb14 {
+				pinmux = < 0x1e01 >;
+			};
+			tim1_ch3n_pb15: tim1_ch3n_pb15 {
+				pinmux = < 0x1f01 >;
+			};
+			tim1_ch1n_pe8: tim1_ch1n_pe8 {
+				pinmux = < 0x4801 >;
+			};
+			tim1_ch1_pe9: tim1_ch1_pe9 {
+				pinmux = < 0x4901 >;
+			};
+			tim1_ch2n_pe10: tim1_ch2n_pe10 {
+				pinmux = < 0x4a01 >;
+			};
+			tim1_ch2_pe11: tim1_ch2_pe11 {
+				pinmux = < 0x4b01 >;
+			};
+			tim1_ch3n_pe12: tim1_ch3n_pe12 {
+				pinmux = < 0x4c01 >;
+			};
+			tim1_ch3_pe13: tim1_ch3_pe13 {
+				pinmux = < 0x4d01 >;
+			};
+			tim1_ch4_pe14: tim1_ch4_pe14 {
+				pinmux = < 0x4e01 >;
+			};
+			tim2_ch1_pa0: tim2_ch1_pa0 {
+				pinmux = < 0x1 >;
+			};
+			tim2_ch2_pa1: tim2_ch2_pa1 {
+				pinmux = < 0x101 >;
+			};
+			tim2_ch3_pa2: tim2_ch3_pa2 {
+				pinmux = < 0x201 >;
+			};
+			tim2_ch4_pa3: tim2_ch4_pa3 {
+				pinmux = < 0x301 >;
+			};
+			tim2_ch1_pa5: tim2_ch1_pa5 {
+				pinmux = < 0x501 >;
+			};
+			tim2_ch1_pa15: tim2_ch1_pa15 {
+				pinmux = < 0xf01 >;
+			};
+			tim2_ch2_pb3: tim2_ch2_pb3 {
+				pinmux = < 0x1301 >;
+			};
+			tim2_ch3_pb10: tim2_ch3_pb10 {
+				pinmux = < 0x1a01 >;
+			};
+			tim3_ch1_pa6: tim3_ch1_pa6 {
+				pinmux = < 0x602 >;
+			};
+			tim3_ch2_pa7: tim3_ch2_pa7 {
+				pinmux = < 0x702 >;
+			};
+			tim3_ch3_pb0: tim3_ch3_pb0 {
+				pinmux = < 0x1002 >;
+			};
+			tim3_ch4_pb1: tim3_ch4_pb1 {
+				pinmux = < 0x1102 >;
+			};
+			tim3_ch1_pb4: tim3_ch1_pb4 {
+				pinmux = < 0x1402 >;
+			};
+			tim3_ch2_pb5: tim3_ch2_pb5 {
+				pinmux = < 0x1502 >;
+			};
+			tim3_ch1_pc6: tim3_ch1_pc6 {
+				pinmux = < 0x2602 >;
+			};
+			tim3_ch2_pc7: tim3_ch2_pc7 {
+				pinmux = < 0x2702 >;
+			};
+			tim3_ch3_pc8: tim3_ch3_pc8 {
+				pinmux = < 0x2802 >;
+			};
+			tim3_ch4_pc9: tim3_ch4_pc9 {
+				pinmux = < 0x2902 >;
+			};
+			tim4_ch1_pb6: tim4_ch1_pb6 {
+				pinmux = < 0x1602 >;
+			};
+			tim4_ch2_pb7: tim4_ch2_pb7 {
+				pinmux = < 0x1702 >;
+			};
+			tim4_ch3_pb8: tim4_ch3_pb8 {
+				pinmux = < 0x1802 >;
+			};
+			tim4_ch4_pb9: tim4_ch4_pb9 {
+				pinmux = < 0x1902 >;
+			};
+			tim4_ch1_pd12: tim4_ch1_pd12 {
+				pinmux = < 0x3c02 >;
+				phandle = < 0xc >;
+			};
+			tim4_ch2_pd13: tim4_ch2_pd13 {
+				pinmux = < 0x3d02 >;
+				phandle = < 0xd >;
+			};
+			tim4_ch3_pd14: tim4_ch3_pd14 {
+				pinmux = < 0x3e02 >;
+				phandle = < 0xe >;
+			};
+			tim4_ch4_pd15: tim4_ch4_pd15 {
+				pinmux = < 0x3f02 >;
+				phandle = < 0xf >;
+			};
+			tim5_ch1_pa0: tim5_ch1_pa0 {
+				pinmux = < 0x2 >;
+			};
+			tim5_ch2_pa1: tim5_ch2_pa1 {
+				pinmux = < 0x102 >;
+			};
+			tim5_ch3_pa2: tim5_ch3_pa2 {
+				pinmux = < 0x202 >;
+			};
+			tim5_ch4_pa3: tim5_ch4_pa3 {
+				pinmux = < 0x302 >;
+			};
+			tim9_ch1_pa2: tim9_ch1_pa2 {
+				pinmux = < 0x203 >;
+			};
+			tim9_ch2_pa3: tim9_ch2_pa3 {
+				pinmux = < 0x303 >;
+			};
+			tim9_ch1_pe5: tim9_ch1_pe5 {
+				pinmux = < 0x4503 >;
+			};
+			tim9_ch2_pe6: tim9_ch2_pe6 {
+				pinmux = < 0x4603 >;
+			};
+			usart1_cts_pa11: usart1_cts_pa11 {
+				pinmux = < 0xb07 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			usart2_cts_pa0: usart2_cts_pa0 {
+				pinmux = < 0x7 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			usart2_cts_pd3: usart2_cts_pd3 {
+				pinmux = < 0x3307 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			usart1_rts_pa12: usart1_rts_pa12 {
+				pinmux = < 0xc07 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			usart2_rts_pa1: usart2_rts_pa1 {
+				pinmux = < 0x107 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			usart2_rts_pd4: usart2_rts_pd4 {
+				pinmux = < 0x3407 >;
+				bias-pull-up;
+				drive-open-drain;
+			};
+			usart1_rx_pa10: usart1_rx_pa10 {
+				pinmux = < 0xa07 >;
+			};
+			usart1_rx_pb3: usart1_rx_pb3 {
+				pinmux = < 0x1307 >;
+			};
+			usart1_rx_pb7: usart1_rx_pb7 {
+				pinmux = < 0x1707 >;
+			};
+			usart2_rx_pa3: usart2_rx_pa3 {
+				pinmux = < 0x307 >;
+				phandle = < 0x5 >;
+			};
+			usart2_rx_pd6: usart2_rx_pd6 {
+				pinmux = < 0x3607 >;
+			};
+			usart6_rx_pa12: usart6_rx_pa12 {
+				pinmux = < 0xc08 >;
+			};
+			usart6_rx_pc7: usart6_rx_pc7 {
+				pinmux = < 0x2708 >;
+			};
+			usart1_tx_pa9: usart1_tx_pa9 {
+				pinmux = < 0x907 >;
+				bias-pull-up;
+			};
+			usart1_tx_pa15: usart1_tx_pa15 {
+				pinmux = < 0xf07 >;
+				bias-pull-up;
+			};
+			usart1_tx_pb6: usart1_tx_pb6 {
+				pinmux = < 0x1607 >;
+				bias-pull-up;
+			};
+			usart2_tx_pa2: usart2_tx_pa2 {
+				pinmux = < 0x207 >;
+				bias-pull-up;
+				phandle = < 0x4 >;
+			};
+			usart2_tx_pd5: usart2_tx_pd5 {
+				pinmux = < 0x3507 >;
+				bias-pull-up;
+			};
+			usart6_tx_pa11: usart6_tx_pa11 {
+				pinmux = < 0xb08 >;
+				bias-pull-up;
+			};
+			usart6_tx_pc6: usart6_tx_pc6 {
+				pinmux = < 0x2608 >;
+				bias-pull-up;
+			};
+			usb_otg_fs_sof_pa8: usb_otg_fs_sof_pa8 {
+				pinmux = < 0x80a >;
+			};
+			usb_otg_fs_vbus_pa9: usb_otg_fs_vbus_pa9 {
+				pinmux = < 0x90a >;
+			};
+			usb_otg_fs_id_pa10: usb_otg_fs_id_pa10 {
+				pinmux = < 0xa0a >;
+			};
+			usb_otg_fs_dm_pa11: usb_otg_fs_dm_pa11 {
+				pinmux = < 0xb0a >;
+				phandle = < 0xa >;
+			};
+			usb_otg_fs_dp_pa12: usb_otg_fs_dp_pa12 {
+				pinmux = < 0xc0a >;
+				phandle = < 0xb >;
+			};
+		};
+		iwdg: watchdog@40003000 {
+			compatible = "st,stm32-watchdog";
+			reg = < 0x40003000 0x400 >;
+			label = "IWDG";
+			status = "disabled";
+		};
+		wwdg: watchdog@40002c00 {
+			compatible = "st,stm32-window-watchdog";
+			reg = < 0x40002c00 0x400 >;
+			clocks = < &rcc 0x2 0x800 >;
+			label = "WWDG";
+			interrupts = < 0x0 0x7 >;
+			status = "disabled";
+		};
+		usart1: serial@40011000 {
+			compatible = "st,stm32-usart", "st,stm32-uart";
+			reg = < 0x40011000 0x400 >;
+			clocks = < &rcc 0x3 0x10 >;
+			interrupts = < 0x25 0x0 >;
+			status = "disabled";
+			label = "UART_1";
+		};
+		usart2: serial@40004400 {
+			compatible = "st,stm32-usart", "st,stm32-uart";
+			reg = < 0x40004400 0x400 >;
+			clocks = < &rcc 0x2 0x20000 >;
+			interrupts = < 0x26 0x0 >;
+			status = "okay";
+			label = "UART_2";
+			pinctrl-0 = < &usart2_tx_pa2 &usart2_rx_pa3 >;
+			current-speed = < 0x1c200 >;
+		};
+		usart6: serial@40011400 {
+			compatible = "st,stm32-usart", "st,stm32-uart";
+			reg = < 0x40011400 0x400 >;
+			clocks = < &rcc 0x3 0x20 >;
+			interrupts = < 0x47 0x0 >;
+			status = "disabled";
+			label = "UART_6";
+		};
+		i2c1: i2c@40005400 {
+			compatible = "st,stm32-i2c-v1";
+			clock-frequency = < 0x61a80 >;
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40005400 0x400 >;
+			clocks = < &rcc 0x2 0x200000 >;
+			interrupts = < 0x1f 0x0 >, < 0x20 0x0 >;
+			interrupt-names = "event", "error";
+			status = "okay";
+			label = "I2C_1";
+			pinctrl-0 = < &i2c1_scl_pb6 &i2c1_sda_pb9 >;
+			lsm303agr-magn@1e {
+				compatible = "st,lis2mdl", "st,lsm303agr-magn";
+				status = "okay";
+				reg = < 0x1e >;
+				irq-gpios = < &gpioe 0x2 0x0 >;
+				label = "LSM303AGR-MAGN";
+			};
+			lsm303agr-accel@19 {
+				compatible = "st,lis2dh", "st,lsm303agr-accel";
+				status = "okay";
+				reg = < 0x19 >;
+				irq-gpios = < &gpioe 0x4 0x0 >, < &gpioe 0x5 0x0 >;
+				label = "LSM303AGR-ACCEL";
+			};
+		};
+		i2c2: i2c@40005800 {
+			compatible = "st,stm32-i2c-v1";
+			clock-frequency = < 0x186a0 >;
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40005800 0x400 >;
+			clocks = < &rcc 0x2 0x400000 >;
+			interrupts = < 0x21 0x0 >, < 0x22 0x0 >;
+			interrupt-names = "event", "error";
+			status = "disabled";
+			label = "I2C_2";
+		};
+		i2c3: i2c@40005c00 {
+			compatible = "st,stm32-i2c-v1";
+			clock-frequency = < 0x186a0 >;
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40005c00 0x400 >;
+			clocks = < &rcc 0x2 0x800000 >;
+			interrupts = < 0x48 0x0 >, < 0x49 0x0 >;
+			interrupt-names = "event", "error";
+			status = "disabled";
+			label = "I2C_3";
+		};
+		spi1: spi@40013000 {
+			compatible = "st,stm32-spi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40013000 0x400 >;
+			clocks = < &rcc 0x3 0x1000 >;
+			interrupts = < 0x23 0x5 >;
+			status = "disabled";
+			label = "SPI_1";
+		};
+		usbotg_fs: zephyr_udc0: usb@50000000 {
+			compatible = "st,stm32-otgfs";
+			reg = < 0x50000000 0x40000 >;
+			interrupts = < 0x43 0x0 >;
+			interrupt-names = "otgfs";
+			num-bidir-endpoints = < 0x4 >;
+			ram-size = < 0x500 >;
+			maximum-speed = "full-speed";
+			phys = < &otgfs_phy >;
+			clocks = < &rcc 0x1 0x80 >;
+			status = "okay";
+			label = "OTGFS";
+			pinctrl-0 = < &usb_otg_fs_dm_pa11 &usb_otg_fs_dp_pa12 >;
+		};
+		timers1: timers@40010000 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40010000 0x400 >;
+			clocks = < &rcc 0x3 0x1 >;
+			interrupts = < 0x18 0x0 >, < 0x19 0x0 >, < 0x1a 0x0 >, < 0x1b 0x0 >;
+			interrupt-names = "brk", "up", "trgcom", "cc";
+			status = "disabled";
+			label = "TIMERS_1";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_1";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		timers2: timers@40000000 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40000000 0x400 >;
+			clocks = < &rcc 0x2 0x1 >;
+			interrupts = < 0x1c 0x0 >;
+			interrupt-names = "global";
+			status = "disabled";
+			label = "TIMERS_2";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_2";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		timers3: timers@40000400 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40000400 0x400 >;
+			clocks = < &rcc 0x2 0x2 >;
+			interrupts = < 0x1d 0x0 >;
+			interrupt-names = "global";
+			status = "disabled";
+			label = "TIMERS_3";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_3";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		timers4: timers@40000800 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40000800 0x400 >;
+			clocks = < &rcc 0x2 0x4 >;
+			interrupts = < 0x1e 0x0 >;
+			interrupt-names = "global";
+			status = "okay";
+			label = "TIMERS_4";
+			pwm4: pwm {
+				compatible = "st,stm32-pwm";
+				status = "okay";
+				st,prescaler = < 0x2710 >;
+				label = "PWM_4";
+				#pwm-cells = < 0x3 >;
+				pinctrl-0 = < &tim4_ch1_pd12 &tim4_ch2_pd13 &tim4_ch3_pd14 &tim4_ch4_pd15 >;
+				phandle = < 0x14 >;
+			};
+		};
+		timers5: timers@40000c00 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40000c00 0x400 >;
+			clocks = < &rcc 0x2 0x8 >;
+			interrupts = < 0x32 0x0 >;
+			interrupt-names = "global";
+			status = "disabled";
+			label = "TIMERS_5";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_5";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		timers9: timers@40014000 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40014000 0x400 >;
+			clocks = < &rcc 0x3 0x10000 >;
+			interrupts = < 0x18 0x0 >;
+			interrupt-names = "global";
+			status = "disabled";
+			label = "TIMERS_9";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_9";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		timers10: timers@40014400 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40014400 0x400 >;
+			clocks = < &rcc 0x3 0x20000 >;
+			interrupts = < 0x19 0x0 >;
+			interrupt-names = "global";
+			status = "disabled";
+			label = "TIMERS_10";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_10";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		timers11: timers@40014800 {
+			compatible = "st,stm32-timers";
+			reg = < 0x40014800 0x400 >;
+			clocks = < &rcc 0x3 0x40000 >;
+			interrupts = < 0x1a 0x0 >;
+			interrupt-names = "global";
+			status = "disabled";
+			label = "TIMERS_11";
+			pwm {
+				compatible = "st,stm32-pwm";
+				status = "disabled";
+				st,prescaler = < 0x0 >;
+				label = "PWM_11";
+				#pwm-cells = < 0x3 >;
+			};
+		};
+		rtc: rtc@40002800 {
+			compatible = "st,stm32-rtc";
+			reg = < 0x40002800 0x400 >;
+			interrupts = < 0x29 0x0 >;
+			clocks = < &rcc 0x2 0x10000000 >;
+			prescaler = < 0x8000 >;
+			status = "okay";
+			label = "RTC_0";
+		};
+		adc1: adc@40012000 {
+			compatible = "st,stm32-adc";
+			reg = < 0x40012000 0x400 >;
+			clocks = < &rcc 0x3 0x100 >;
+			interrupts = < 0x12 0x0 >;
+			status = "disabled";
+			label = "ADC_1";
+			#io-channel-cells = < 0x1 >;
+		};
+		dma1: dma@40026000 {
+			compatible = "st,stm32-dma-v1";
+			#dma-cells = < 0x4 >;
+			reg = < 0x40026000 0x400 >;
+			interrupts = < 0xb 0x0 0xc 0x0 0xd 0x0 0xe 0x0 0xf 0x0 0x10 0x0 0x11 0x0 0x2f 0x0 >;
+			clocks = < &rcc 0x0 0x200000 >;
+			status = "disabled";
+			label = "DMA_1";
+			phandle = < 0x10 >;
+		};
+		dma2: dma@40026400 {
+			compatible = "st,stm32-dma-v1";
+			#dma-cells = < 0x4 >;
+			reg = < 0x40026400 0x400 >;
+			interrupts = < 0x38 0x0 0x39 0x0 0x3a 0x0 0x3b 0x0 0x3c 0x0 0x44 0x0 0x45 0x0 0x46 0x0 >;
+			clocks = < &rcc 0x0 0x400000 >;
+			st,mem2mem;
+			status = "disabled";
+			label = "DMA_2";
+			phandle = < 0x11 >;
+		};
+		spi2: spi@40003800 {
+			compatible = "st,stm32-spi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40003800 0x400 >;
+			clocks = < &rcc 0x2 0x4000 >;
+			interrupts = < 0x24 0x5 >;
+			status = "disabled";
+			label = "SPI_2";
+		};
+		spi3: spi@40003c00 {
+			compatible = "st,stm32-spi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40003c00 0x400 >;
+			clocks = < &rcc 0x2 0x8000 >;
+			interrupts = < 0x33 0x5 >;
+			status = "disabled";
+			label = "SPI_3";
+		};
+		spi4: spi@40013400 {
+			compatible = "st,stm32-spi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40013400 0x400 >;
+			clocks = < &rcc 0x3 0x2000 >;
+			interrupts = < 0x54 0x5 >;
+			status = "disabled";
+			label = "SPI_4";
+		};
+		i2s2: i2s@40003800 {
+			compatible = "st,stm32-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40003800 0x400 >;
+			clocks = < &rcc 0x2 0x4000 >;
+			interrupts = < 0x24 0x5 >;
+			dmas = < &dma1 0x4 0x0 0x400 0x3 &dma1 0x3 0x0 0x400 0x3 >;
+			dma-names = "tx", "rx";
+			status = "disabled";
+			label = "I2S_2";
+		};
+		i2s3: i2s@40003c00 {
+			compatible = "st,stm32-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40003c00 0x400 >;
+			clocks = < &rcc 0x2 0x8000 >;
+			interrupts = < 0x33 0x5 >;
+			dmas = < &dma1 0x5 0x0 0x400 0x3 &dma1 0x0 0x0 0x400 0x3 >;
+			dma-names = "tx", "rx";
+			status = "disabled";
+			label = "I2S_3";
+		};
+		spi5: spi@40015000 {
+			compatible = "st,stm32-spi";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40015000 0x400 >;
+			clocks = < &rcc 0x3 0x100000 >;
+			interrupts = < 0x55 0x5 >;
+			status = "disabled";
+			label = "SPI_5";
+		};
+		i2s1: i2s@40013000 {
+			compatible = "st,stm32-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40013000 0x400 >;
+			clocks = < &rcc 0x3 0x1000 >;
+			interrupts = < 0x23 0x5 >;
+			dmas = < &dma2 0x3 0x3 0x400 0x3 &dma2 0x2 0x3 0x400 0x3 >;
+			dma-names = "tx", "rx";
+			status = "disabled";
+			label = "I2S_1";
+		};
+		i2s4: i2s@40013400 {
+			compatible = "st,stm32-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40013400 0x400 >;
+			clocks = < &rcc 0x3 0x2000 >;
+			interrupts = < 0x54 0x5 >;
+			dmas = < &dma2 0x1 0x4 0x400 0x3 &dma2 0x0 0x4 0x400 0x3 >;
+			dma-names = "tx", "rx";
+			status = "disabled";
+			label = "I2S_4";
+		};
+		i2s5: i2s@40015000 {
+			compatible = "st,stm32-i2s";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
+			reg = < 0x40015000 0x400 >;
+			clocks = < &rcc 0x3 0x100000 >;
+			interrupts = < 0x55 0x5 >;
+			dmas = < &dma2 0x6 0x7 0x400 0x3 &dma2 0x5 0x7 0x400 0x3 >;
+			dma-names = "tx", "rx";
+			status = "disabled";
+			label = "I2S_5";
+		};
+	};
+	cpus {
+		#address-cells = < 0x1 >;
+		#size-cells = < 0x0 >;
+		cpu@0 {
+			device_type = "cpu";
+			compatible = "arm,cortex-m4f";
+			reg = < 0x0 >;
+		};
+	};
+	sram0: memory@20000000 {
+		compatible = "mmio-sram";
+		reg = < 0x20000000 0x20000 >;
+	};
+	clocks {
+		clk_hse: clk-hse {
+			#clock-cells = < 0x0 >;
+			compatible = "st,stm32-hse-clock";
+			status = "okay";
+			clock-frequency = < 0x7a1200 >;
+			phandle = < 0x12 >;
+		};
+		clk_hsi: clk-hsi {
+			#clock-cells = < 0x0 >;
+			compatible = "fixed-clock";
+			clock-frequency = < 0xf42400 >;
+			status = "disabled";
+		};
+		clk_lse: clk-lse {
+			#clock-cells = < 0x0 >;
+			compatible = "fixed-clock";
+			clock-frequency = < 0x8000 >;
+			status = "disabled";
+		};
+		clk_lsi: clk-lsi {
+			#clock-cells = < 0x0 >;
+			compatible = "fixed-clock";
+			clock-frequency = < 0x7d00 >;
+			status = "disabled";
+		};
+		pll: pll {
+			#clock-cells = < 0x0 >;
+			compatible = "st,stm32f4-pll-clock";
+			status = "okay";
+			div-m = < 0x4 >;
+			mul-n = < 0x60 >;
+			div-p = < 0x2 >;
+			div-q = < 0x4 >;
+			clocks = < &clk_hse >;
+			phandle = < 0x2 >;
+		};
+	};
+	otgfs_phy: otgfs_phy {
+		compatible = "usb-nop-xceiv";
+		#phy-cells = < 0x0 >;
+		label = "OTGFS_PHY";
+		phandle = < 0x9 >;
+	};
+	leds {
+		compatible = "gpio-leds";
+		orange_led_3: led_3 {
+			gpios = < &gpiod 0xd 0x0 >;
+			label = "User LD3";
+		};
+		green_led_4: led_4 {
+			gpios = < &gpiod 0xc 0x0 >;
+			label = "User LD4";
+		};
+		red_led_5: led_5 {
+			gpios = < &gpiod 0xe 0x0 >;
+			label = "User LD5";
+		};
+		blue_led_6: led_6 {
+			gpios = < &gpiod 0xf 0x0 >;
+			label = "User LD6";
+		};
+	};
+	pwmleds {
+		compatible = "pwm-leds";
+		green_pwm_led: green_pwm_led {
+			pwms = < &pwm4 0x1 0x0 0x0 >;
+		};
+		orange_pwm_led: orange_pwm_led {
+			pwms = < &pwm4 0x2 0x0 0x0 >;
+		};
+		red_pwm_led: red_pwm_led {
+			pwms = < &pwm4 0x3 0x0 0x0 >;
+		};
+		blue_pwm_led: blue_pwm_led {
+			pwms = < &pwm4 0x4 0x0 0x0 >;
+		};
+	};
+	gpio_keys {
+		compatible = "gpio-keys";
+		user_button: button {
+			label = "User";
+			gpios = < &gpioa 0x0 0x1 >;
+		};
+	};
+	lcd0: lcd_0 {
+		compatible = "zephyr,lcd";
+		label = "LCD_0";
+		output-gpios = < &gpiod 0xd 0x0 >;
+	};
+};

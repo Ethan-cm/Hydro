@@ -1,0 +1,5 @@
+config LCDSRC
+    bool "lcd src"
+    depends on GPIO
+    help
+        Enable LCD screen

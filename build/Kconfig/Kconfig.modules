@@ -1,0 +1,72 @@
+menu "CANopenNode (/home/ethan/Repos/Zephyr/modules/lib/canopennode)"
+osource "$(ZEPHYR_CANOPENNODE_KCONFIG)"
+config ZEPHYR_CANOPENNODE_MODULE
+	bool
+	default y
+endmenu
+menu "hal_gigadevice (/home/ethan/Repos/Zephyr/modules/hal/gigadevice)"
+osource "$(ZEPHYR_HAL_GIGADEVICE_KCONFIG)"
+config ZEPHYR_HAL_GIGADEVICE_MODULE
+	bool
+	default y
+endmenu
+menu "hal_nordic (/home/ethan/Repos/Zephyr/modules/hal/nordic)"
+osource "$(ZEPHYR_HAL_NORDIC_KCONFIG)"
+config ZEPHYR_HAL_NORDIC_MODULE
+	bool
+	default y
+endmenu
+menu "hal_nxp (/home/ethan/Repos/Zephyr/modules/hal/nxp)"
+osource "$(ZEPHYR_HAL_NXP_KCONFIG)"
+config ZEPHYR_HAL_NXP_MODULE
+	bool
+	default y
+endmenu
+menu "loramac-node (/home/ethan/Repos/Zephyr/modules/lib/loramac-node)"
+osource "$(ZEPHYR_LORAMAC_NODE_KCONFIG)"
+config ZEPHYR_LORAMAC_NODE_MODULE
+	bool
+	default y
+endmenu
+menu "lz4 (/home/ethan/Repos/Zephyr/modules/lib/lz4)"
+osource "$(ZEPHYR_LZ4_KCONFIG)"
+config ZEPHYR_LZ4_MODULE
+	bool
+	default y
+endmenu
+menu "mbedtls (/home/ethan/Repos/Zephyr/modules/crypto/mbedtls)"
+osource "$(ZEPHYR_MBEDTLS_KCONFIG)"
+config ZEPHYR_MBEDTLS_MODULE
+	bool
+	default y
+endmenu
+menu "nanopb (/home/ethan/Repos/Zephyr/modules/lib/nanopb)"
+osource "$(ZEPHYR_NANOPB_KCONFIG)"
+config ZEPHYR_NANOPB_MODULE
+	bool
+	default y
+endmenu
+menu "sof (/home/ethan/Repos/Zephyr/modules/audio/sof)"
+osource "/home/ethan/Repos/Zephyr/modules/audio/sof/zephyr/Kconfig"
+config ZEPHYR_SOF_MODULE
+	bool
+	default y
+endmenu
+menu "tflite-micro (/home/ethan/Repos/Zephyr/modules/lib/tflite-micro)"
+osource "$(ZEPHYR_TFLITE_MICRO_KCONFIG)"
+config ZEPHYR_TFLITE_MICRO_MODULE
+	bool
+	default y
+endmenu
+menu "TraceRecorder (/home/ethan/Repos/Zephyr/modules/debug/TraceRecorder)"
+osource "/home/ethan/Repos/Zephyr/modules/debug/TraceRecorder/kernelports/Zephyr/Kconfig"
+config ZEPHYR_TRACERECORDER_MODULE
+	bool
+	default y
+endmenu
+menu "trusted-firmware-m (/home/ethan/Repos/Zephyr/modules/tee/tf-m/trusted-firmware-m)"
+osource "$(ZEPHYR_TRUSTED_FIRMWARE_M_KCONFIG)"
+config ZEPHYR_TRUSTED_FIRMWARE_M_MODULE
+	bool
+	default y
+endmenu
