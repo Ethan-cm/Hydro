@@ -22,7 +22,7 @@ done using Zephyr with the eventual goal of being completely board agnostic*/
 
 
 
-const uint8_t str[] = "Oh fook"; // test string
+const uint8_t str[] = "ZEPHYR"; // test string
 
 void main(void){
 
@@ -47,9 +47,10 @@ void main(void){
 		lcdcursorposition(lcd, 0, column);
 		for (int i = 0; i <sizeof(str) -1; i++){
 			lcddatawrite(lcd, str[i]);
+			column++;
 		}
-		column++;
-		k_msleep(100);
+		//column++;
+		k_msleep(1000);
 	}
 
 
@@ -87,16 +88,17 @@ void lcdbytewrite(const struct device *inputdev,uint8_t data){ //
 	inputdev in the incoming device pointer (should be GPIOD)
 	delay is a integer wait time in miliseconds.
 	*/
-	gpio_pin_set(inputdev, D7_PIN, (data & (1<<7)) ? 1 : 0);//bit shifting to get at the data in the register, pretty sure this is more optimized than just for looping over them with an array
-	gpio_pin_set(inputdev, D6_PIN, (data & (1<<6)) ? 1 : 0);
-	gpio_pin_set(inputdev, D5_PIN, (data & (1<<5)) ? 1 : 0);
-	gpio_pin_set(inputdev, D4_PIN, (data & (1<<4)) ? 1 : 0);
+	gpio_pin_set(inputdev, D7_PIN, (data & (1<<7)));//bit shifting to get at the data in the register, pretty sure this is more optimized than just for looping over them with an array
+	gpio_pin_set(inputdev, D6_PIN, (data & (1<<6)));
+	gpio_pin_set(inputdev, D5_PIN, (data & (1<<5)));
+	gpio_pin_set(inputdev, D4_PIN, (data & (1<<4)));
 	epulse(inputdev);	
-	gpio_pin_set(inputdev, D7_PIN, (data & (1<<3)) ? 1 : 0);
-	gpio_pin_set(inputdev, D6_PIN, (data & (1<<2)) ? 1 : 0);
-	gpio_pin_set(inputdev, D5_PIN, (data & (1<<1)) ? 1 : 0);
-	gpio_pin_set(inputdev, D4_PIN, (data & (1<<0)) ? 1 : 0);
+	gpio_pin_set(inputdev, D7_PIN, (data & (1<<3)));
+	gpio_pin_set(inputdev, D6_PIN, (data & (1<<2)));
+	gpio_pin_set(inputdev, D5_PIN, (data & (1<<1)));
+	gpio_pin_set(inputdev, D4_PIN, (data & (1<<0)));
 	epulse(inputdev);
+
 	return;
 }
 
@@ -111,7 +113,7 @@ void commandmode(const struct device *inputdevice){ //function used in other LCD
 }
 void epulse(const struct device *inputdevice){ //function used in other LCD related functions to set EN on or off
 	gpio_pin_set(inputdevice, E_PIN, 1);
-	k_msleep(1);
+	k_msleep(5);
 	gpio_pin_set(inputdevice, E_PIN, 0);
 	return;
 }
@@ -164,10 +166,14 @@ void lcdinit(const struct device *inputdevice){
 	uint8_t initcmd = (LCD_CMD_CONFIG | LCD_CMD_CONFIG_4BITMODE);
 	lcdinitwrite(inputdevice, initcmd);
 	k_msleep(10);
+	lcdinitwrite(inputdevice, initcmd);
+	k_msleep(10);
+	lcdinitwrite(inputdevice, initcmd);
+	k_msleep(10);
 	initcmd = (LCD_CMD_CONFIG | LCD_CMD_CONFIG_2ROWS | LCD_CMD_CONFIG_5X8 | LCD_CMD_CONFIG_4BITMODE); 
 	lcdcmdwrite(inputdevice, initcmd);
 	k_msleep(10);
-	initcmd = (LCD_CMD_DISPLAY | LCD_CMD_DISPLAY_ON); //config onoff 0b0000 1000 | 0b 0000 0100 = 0b0000 1100 = 0x0C
+	initcmd = (LCD_CMD_DISPLAY | LCD_CMD_DISPLAY_ON | LCD_CMD_DISPLAY_CURSOR_OFF | LCD_CMD_DISPLAY_BLINK_OFF);; //config onoff 0b0000 1000 | 0b 0000 0100 = 0b0000 1100 = 0x0C
 	lcdcmdwrite(inputdevice, initcmd);
 	k_msleep(10);
 	return; 
