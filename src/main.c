@@ -22,8 +22,8 @@ done using Zephyr with the eventual goal of being completely board agnostic*/
 
 
 
-const uint8_t str[] = "ZEPHYR"; // test string
-
+const uint8_t str[] = "ITS ANNUDAH"; // test string
+const uint8_t str2[] = "SHOAH";
 void main(void){
 
 	//bool toggle = true;
@@ -37,19 +37,24 @@ void main(void){
 	lcdinit(lcd);
 	gpio_pin_set(blue, PIN3, 1);
 	uint8_t column = 0;
-
+	uint8_t row = 0;
 	while(1){
 
-		//gpio_pin_set(blue, PIN3, 1)
-		//k_msleep(SLEEPTIME);
+		//gpio_pin_set(blue, PIN3, 1);
+		
 		lcdcmdwrite(lcd,LCD_CMD_CLEAR);
 
-		lcdcursorposition(lcd, 0, column);
+		lcdcursorposition(lcd, row, column); //input, row, column
 		for (int i = 0; i <sizeof(str) -1; i++){
 			lcddatawrite(lcd, str[i]);
-			column++;
+
 		}
-		//column++;
+		row = 1;
+		lcdcursorposition(lcd, row, column);
+		for (int i = 0; i <sizeof(str2) -1; i++){
+			lcddatawrite(lcd, str2[i]);
+		}		
+		row = 0;
 		k_msleep(1000);
 	}
 
@@ -113,14 +118,16 @@ void commandmode(const struct device *inputdevice){ //function used in other LCD
 }
 void epulse(const struct device *inputdevice){ //function used in other LCD related functions to set EN on or off
 	gpio_pin_set(inputdevice, E_PIN, 1);
-	k_msleep(5);
+	k_msleep(2);
 	gpio_pin_set(inputdevice, E_PIN, 0);
 	return;
 }
 
 void lcdcursorposition(const struct device *inputdevice ,uint8_t rowpos, uint8_t colpos) //function used to set the cursor positon to the specified row and column 
-{	
+{
+	uint8_t ddram = 0x80;
 	uint8_t hexadress;
+	
 	switch (rowpos){
 		case 0:
 			hexadress = 0x00;
@@ -137,8 +144,10 @@ void lcdcursorposition(const struct device *inputdevice ,uint8_t rowpos, uint8_t
 	if (colpos < 16){
 		hexadress += colpos; // add the number to the position register, this is done this way because we cant possibly fuck up our row position.
 	}
-	else{return;}
-	
+	else return;
+
+	hexadress |= ddram;
+
 	lcdcmdwrite(inputdevice, hexadress);
 	
 	return;
