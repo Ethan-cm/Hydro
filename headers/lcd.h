@@ -41,5 +41,9 @@ enum LCD_commands{ //indented commands are part of the root command. Just OR the
     LCD_CMD_DDRAM = 0x80, //0b1000 0000
 };
 
+void lcdinit(const struct device *inputdevice);
+void lcdcmdwrite(const struct device *inputdev, uint8_t cmddata);
+void lcddatawrite(const struct device *inputdev, uint8_t data);
+void lcdcursorposition(const struct device *inputdevice ,uint8_t rowpos, uint8_t colpos);
 
 #endif
