@@ -44,6 +44,14 @@ cmake_ninja_workdir = /home/ethan/Repos/Zephyr/Hydrolab/build/
 
 build cmake_object_order_depends_target_app: phony || zephyr/driver_validation_h_target zephyr/kobj_types_h_target zephyr/syscall_list_h_target zephyr/zephyr_generated_headers
 
+build CMakeFiles/app.dir/src/DHT11temphum.c.obj: C_COMPILER__app_ /home/ethan/Repos/Zephyr/Hydrolab/src/DHT11temphum.c || cmake_object_order_depends_target_app
+  DEFINES = -DBUILD_VERSION=v2.7.99-1155-gecd7c23daa0c -DCORE_CM4 -DHSE_VALUE=8000000 -DKERNEL -DSTM32F411xE -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -D_FORTIFY_SOURCE=2 -D__PROGRAM_START -D__ZEPHYR__=1
+  DEP_FILE = CMakeFiles/app.dir/src/DHT11temphum.c.obj.d
+  FLAGS = -Os -imacros /home/ethan/Repos/Zephyr/Hydrolab/build/zephyr/include/generated/autoconf.h -ffreestanding -fno-common -g -gdwarf-4 -fdiagnostics-color=always -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfp16-format=ieee -imacros /home/ethan/Repos/Zephyr/zephyr/include/toolchain/zephyr_stdint.h -Wall -Wformat -Wformat-security -Wno-format-zero-length -Wno-main -Wno-pointer-sign -Wpointer-arith -Wexpansion-to-defined -Wno-address-of-packed-member -Wno-unused-but-set-variable -Werror=implicit-int -fno-asynchronous-unwind-tables -fno-pie -fno-pic -fno-strict-overflow -fno-reorder-functions -fno-defer-pop -fmacro-prefix-map=/home/ethan/Repos/Zephyr/Hydrolab=CMAKE_SOURCE_DIR -fmacro-prefix-map=/home/ethan/Repos/Zephyr/zephyr=ZEPHYR_BASE -fmacro-prefix-map=/home/ethan/Repos/Zephyr=WEST_TOPDIR -ffunction-sections -fdata-sections -std=c99 -nostdinc
+  INCLUDES = -I/home/ethan/Repos/Zephyr/zephyr/include -I/home/ethan/Repos/Zephyr/Hydrolab/build/zephyr/include/generated -I/home/ethan/Repos/Zephyr/zephyr/soc/arm/st_stm32/stm32f4 -I/home/ethan/Repos/Zephyr/zephyr/drivers -I/home/ethan/Repos/Zephyr/zephyr/soc/arm/st_stm32/common -I/home/ethan/Repos/Zephyr/modules/hal/cmsis/CMSIS/Core/Include -I/home/ethan/Repos/Zephyr/modules/hal/stm32/stm32cube/stm32f4xx/soc -I/home/ethan/Repos/Zephyr/modules/hal/stm32/stm32cube/stm32f4xx/drivers/include -I/home/ethan/Repos/Zephyr/modules/hal/stm32/stm32cube/stm32f4xx/drivers/include/Legacy -I/home/ethan/Repos/Zephyr/modules/hal/stm32/stm32cube/common_ll/include -isystem /home/ethan/Repos/Zephyr/zephyr/lib/libc/minimal/include -isystem /home/ethan/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/include -isystem /home/ethan/zephyr-sdk-0.13.1/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.3.0/include-fixed
+  OBJECT_DIR = CMakeFiles/app.dir
+  OBJECT_FILE_DIR = CMakeFiles/app.dir/src
+
 build CMakeFiles/app.dir/src/lcd.c.obj: C_COMPILER__app_ /home/ethan/Repos/Zephyr/Hydrolab/src/lcd.c || cmake_object_order_depends_target_app
   DEFINES = -DBUILD_VERSION=v2.7.99-1155-gecd7c23daa0c -DCORE_CM4 -DHSE_VALUE=8000000 -DKERNEL -DSTM32F411xE -DUSE_FULL_LL_DRIVER -DUSE_HAL_DRIVER -D_FORTIFY_SOURCE=2 -D__PROGRAM_START -D__ZEPHYR__=1
   DEP_FILE = CMakeFiles/app.dir/src/lcd.c.obj.d
@@ -68,7 +76,7 @@ build CMakeFiles/app.dir/src/main.c.obj: C_COMPILER__app_ /home/ethan/Repos/Zeph
 #############################################
 # Link the static library app/libapp.a
 
-build app/libapp.a: C_STATIC_LIBRARY_LINKER__app_ CMakeFiles/app.dir/src/lcd.c.obj CMakeFiles/app.dir/src/main.c.obj || zephyr/driver_validation_h_target zephyr/kobj_types_h_target zephyr/syscall_list_h_target zephyr/zephyr_generated_headers
+build app/libapp.a: C_STATIC_LIBRARY_LINKER__app_ CMakeFiles/app.dir/src/DHT11temphum.c.obj CMakeFiles/app.dir/src/lcd.c.obj CMakeFiles/app.dir/src/main.c.obj || zephyr/driver_validation_h_target zephyr/kobj_types_h_target zephyr/syscall_list_h_target zephyr/zephyr_generated_headers
   OBJECT_DIR = CMakeFiles/app.dir
   POST_BUILD = :
   PRE_LINK = :

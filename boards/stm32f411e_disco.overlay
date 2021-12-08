@@ -21,3 +21,14 @@
 &gpiod {
 	status = "okay";
 };
+
+/ {
+	dht22 {
+		compatible = "aosong,dht";
+		status = "okay";
+		label = "DHT22";
+		dio-gpios = <&gpioa 1 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		dht22;
+	};
+};
+
