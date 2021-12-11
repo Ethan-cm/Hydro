@@ -17,17 +17,17 @@
  *   6   /clocks/clk-hse
  *   7   /clocks/pll
  *   8   /soc/rcc@40023800
- *   9   /soc/pin-controller@40020000/gpio@40020000
- *   10  /dht22
- *   11  /soc/pin-controller@40020000/gpio@40020c00
- *   12  /lcd_0
- *   13  /memory@20000000
- *   14  /clocks/clk-hsi
- *   15  /clocks/clk-lse
- *   16  /clocks/clk-lsi
- *   17  /cpus
- *   18  /cpus/cpu@0
- *   19  /gpio_keys
+ *   9   /soc/pin-controller@40020000/gpio@40020c00
+ *   10  /dht11
+ *   11  /lcd_0
+ *   12  /memory@20000000
+ *   13  /clocks/clk-hsi
+ *   14  /clocks/clk-lse
+ *   15  /clocks/clk-lsi
+ *   16  /cpus
+ *   17  /cpus/cpu@0
+ *   18  /gpio_keys
+ *   19  /soc/pin-controller@40020000/gpio@40020000
  *   20  /gpio_keys/button
  *   21  /leds
  *   22  /leds/led_3
@@ -326,10 +326,10 @@
 
 /* Node's name with unit-address: */
 #define DT_N_FULL_NAME "/"
-#define DT_N_FOREACH_CHILD(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_memory_20000000) fn(DT_N_S_clocks) fn(DT_N_S_otgfs_phy) fn(DT_N_S_leds) fn(DT_N_S_pwmleds) fn(DT_N_S_gpio_keys) fn(DT_N_S_lcd_0) fn(DT_N_S_dht22)
-#define DT_N_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_memory_20000000, __VA_ARGS__) fn(DT_N_S_clocks, __VA_ARGS__) fn(DT_N_S_otgfs_phy, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_pwmleds, __VA_ARGS__) fn(DT_N_S_gpio_keys, __VA_ARGS__) fn(DT_N_S_lcd_0, __VA_ARGS__) fn(DT_N_S_dht22, __VA_ARGS__)
-#define DT_N_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_memory_20000000) fn(DT_N_S_clocks) fn(DT_N_S_otgfs_phy) fn(DT_N_S_leds) fn(DT_N_S_pwmleds) fn(DT_N_S_gpio_keys) fn(DT_N_S_lcd_0) fn(DT_N_S_dht22) 
-#define DT_N_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_memory_20000000, __VA_ARGS__) fn(DT_N_S_clocks, __VA_ARGS__) fn(DT_N_S_otgfs_phy, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_pwmleds, __VA_ARGS__) fn(DT_N_S_gpio_keys, __VA_ARGS__) fn(DT_N_S_lcd_0, __VA_ARGS__) fn(DT_N_S_dht22, __VA_ARGS__) 
+#define DT_N_FOREACH_CHILD(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_memory_20000000) fn(DT_N_S_clocks) fn(DT_N_S_otgfs_phy) fn(DT_N_S_leds) fn(DT_N_S_pwmleds) fn(DT_N_S_gpio_keys) fn(DT_N_S_lcd_0) fn(DT_N_S_dht11)
+#define DT_N_FOREACH_CHILD_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_memory_20000000, __VA_ARGS__) fn(DT_N_S_clocks, __VA_ARGS__) fn(DT_N_S_otgfs_phy, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_pwmleds, __VA_ARGS__) fn(DT_N_S_gpio_keys, __VA_ARGS__) fn(DT_N_S_lcd_0, __VA_ARGS__) fn(DT_N_S_dht11, __VA_ARGS__)
+#define DT_N_FOREACH_CHILD_STATUS_OKAY(fn) fn(DT_N_S_chosen) fn(DT_N_S_aliases) fn(DT_N_S_soc) fn(DT_N_S_cpus) fn(DT_N_S_memory_20000000) fn(DT_N_S_clocks) fn(DT_N_S_otgfs_phy) fn(DT_N_S_leds) fn(DT_N_S_pwmleds) fn(DT_N_S_gpio_keys) fn(DT_N_S_lcd_0) fn(DT_N_S_dht11) 
+#define DT_N_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_chosen, __VA_ARGS__) fn(DT_N_S_aliases, __VA_ARGS__) fn(DT_N_S_soc, __VA_ARGS__) fn(DT_N_S_cpus, __VA_ARGS__) fn(DT_N_S_memory_20000000, __VA_ARGS__) fn(DT_N_S_clocks, __VA_ARGS__) fn(DT_N_S_otgfs_phy, __VA_ARGS__) fn(DT_N_S_leds, __VA_ARGS__) fn(DT_N_S_pwmleds, __VA_ARGS__) fn(DT_N_S_gpio_keys, __VA_ARGS__) fn(DT_N_S_lcd_0, __VA_ARGS__) fn(DT_N_S_dht11, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
 #define DT_N_ORD 0
@@ -343,11 +343,11 @@
 	2, /* /chosen */ \
 	3, /* /soc */ \
 	5, /* /clocks */ \
-	10, /* /dht22 */ \
-	12, /* /lcd_0 */ \
-	13, /* /memory@20000000 */ \
-	17, /* /cpus */ \
-	19, /* /gpio_keys */ \
+	10, /* /dht11 */ \
+	11, /* /lcd_0 */ \
+	12, /* /memory@20000000 */ \
+	16, /* /cpus */ \
+	18, /* /gpio_keys */ \
 	21, /* /leds */ \
 	26, /* /pwmleds */ \
 	61, /* /otgfs_phy */
@@ -580,8 +580,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40020000_SUPPORTS_ORDS \
-	9, /* /soc/pin-controller@40020000/gpio@40020000 */ \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	19, /* /soc/pin-controller@40020000/gpio@40020000 */ \
 	29, /* /soc/pin-controller@40020000/tim4_ch1_pd12 */ \
 	30, /* /soc/pin-controller@40020000/tim4_ch2_pd13 */ \
 	31, /* /soc/pin-controller@40020000/tim4_ch3_pd14 */ \
@@ -881,9 +881,9 @@
 #define DT_N_S_clocks_SUPPORTS_ORDS \
 	6, /* /clocks/clk-hse */ \
 	7, /* /clocks/pll */ \
-	14, /* /clocks/clk-hsi */ \
-	15, /* /clocks/clk-lse */ \
-	16, /* /clocks/clk-lsi */
+	13, /* /clocks/clk-hsi */ \
+	14, /* /clocks/clk-lse */ \
+	15, /* /clocks/clk-lsi */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_clocks_EXISTS 1
@@ -1081,8 +1081,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_rcc_40023800_SUPPORTS_ORDS \
-	9, /* /soc/pin-controller@40020000/gpio@40020000 */ \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	19, /* /soc/pin-controller@40020000/gpio@40020000 */ \
 	28, /* /soc/timers@40000800 */ \
 	38, /* /soc/adc@40012000 */ \
 	39, /* /soc/i2c@40005800 */ \
@@ -1176,211 +1176,6 @@
 #define DT_N_S_soc_S_rcc_40023800_P_wakeup_source_EXISTS 1
 
 /*
- * Devicetree node: /soc/pin-controller@40020000/gpio@40020000
- *
- * Node identifier: DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
- *
- * Binding (compatible = st,stm32-gpio):
- *   $ZEPHYR_BASE/dts/bindings/gpio/st,stm32-gpio.yaml
- *
- * (Descriptions have moved to the Devicetree Bindings Index
- * in the documentation.)
- */
-
-/* Node's full path: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_PATH "/soc/pin-controller@40020000/gpio@40020000"
-
-/* Node's name with unit-address: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FULL_NAME "gpio@40020000"
-
-/* Node parent (/soc/pin-controller@40020000) identifier: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_PARENT DT_N_S_soc_S_pin_controller_40020000
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD(fn) 
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD_VARGS(fn, ...) 
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD_STATUS_OKAY(fn) 
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
-
-/* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_ORD 9
-
-/* Ordinals for what this node depends on directly: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REQUIRES_ORDS \
-	4, /* /soc/pin-controller@40020000 */ \
-	8, /* /soc/rcc@40023800 */
-
-/* Ordinals for what depends directly on this node: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_SUPPORTS_ORDS \
-	10, /* /dht22 */ \
-	20, /* /gpio_keys/button */
-
-/* Existence and alternate IDs: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_EXISTS 1
-#define DT_N_INST_0_st_stm32_gpio DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
-#define DT_N_NODELABEL_gpioa      DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
-
-/* Macros for properties that are special in the specification: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_NUM 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_IDX_0_VAL_ADDRESS 1073872896 /* 0x40020000 */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_IDX_0_VAL_SIZE 1024 /* 0x400 */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_IRQ_NUM 0
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_COMPAT_MATCHES_st_stm32_gpio 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_STATUS_okay 1
-
-/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_PINCTRL_NUM 0
-
-/* Generic property macros: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg {1073872896 /* 0x40020000 */, 1024 /* 0x400 */}
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_0 1073872896
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_1 1024
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_1_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 0) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 1)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 1, __VA_ARGS__)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label "GPIOA"
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_STRING_TOKEN GPIOA
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_STRING_UPPER_TOKEN GPIOA
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 0) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 1) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 2) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 3) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 4)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 4, __VA_ARGS__)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_PH DT_N_S_soc_S_rcc_40023800
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bus 0
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bus_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bits 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bits_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, clocks, 0)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, clocks, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_LEN 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_gpio_controller 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_gpio_controller_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_ngpios 32
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_ngpios_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible {"st,stm32-gpio"}
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_IDX_0 "st,stm32-gpio"
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_IDX_0_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, compatible, 0)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, compatible, 0, __VA_ARGS__)
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_LEN 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_EXISTS 1
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_wakeup_source 0
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_wakeup_source_EXISTS 1
-
-/*
- * Devicetree node: /dht22
- *
- * Node identifier: DT_N_S_dht22
- *
- * Binding (compatible = aosong,dht):
- *   $ZEPHYR_BASE/dts/bindings/sensor/aosong,dht.yaml
- *
- * (Descriptions have moved to the Devicetree Bindings Index
- * in the documentation.)
- */
-
-/* Node's full path: */
-#define DT_N_S_dht22_PATH "/dht22"
-
-/* Node's name with unit-address: */
-#define DT_N_S_dht22_FULL_NAME "dht22"
-
-/* Node parent (/) identifier: */
-#define DT_N_S_dht22_PARENT DT_N
-#define DT_N_S_dht22_FOREACH_CHILD(fn) 
-#define DT_N_S_dht22_FOREACH_CHILD_VARGS(fn, ...) 
-#define DT_N_S_dht22_FOREACH_CHILD_STATUS_OKAY(fn) 
-#define DT_N_S_dht22_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
-
-/* Node's dependency ordinal: */
-#define DT_N_S_dht22_ORD 10
-
-/* Ordinals for what this node depends on directly: */
-#define DT_N_S_dht22_REQUIRES_ORDS \
-	0, /* / */ \
-	9, /* /soc/pin-controller@40020000/gpio@40020000 */
-
-/* Ordinals for what depends directly on this node: */
-#define DT_N_S_dht22_SUPPORTS_ORDS /* nothing */
-
-/* Existence and alternate IDs: */
-#define DT_N_S_dht22_EXISTS 1
-#define DT_N_INST_0_aosong_dht DT_N_S_dht22
-
-/* Macros for properties that are special in the specification: */
-#define DT_N_S_dht22_REG_NUM 0
-#define DT_N_S_dht22_IRQ_NUM 0
-#define DT_N_S_dht22_COMPAT_MATCHES_aosong_dht 1
-#define DT_N_S_dht22_STATUS_okay 1
-
-/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
-#define DT_N_S_dht22_PINCTRL_NUM 0
-
-/* Generic property macros: */
-#define DT_N_S_dht22_P_dio_gpios_IDX_0_EXISTS 1
-#define DT_N_S_dht22_P_dio_gpios_IDX_0_PH DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
-#define DT_N_S_dht22_P_dio_gpios_IDX_0_VAL_pin 1
-#define DT_N_S_dht22_P_dio_gpios_IDX_0_VAL_pin_EXISTS 1
-#define DT_N_S_dht22_P_dio_gpios_IDX_0_VAL_flags 17
-#define DT_N_S_dht22_P_dio_gpios_IDX_0_VAL_flags_EXISTS 1
-#define DT_N_S_dht22_P_dio_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht22, dio_gpios, 0)
-#define DT_N_S_dht22_P_dio_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht22, dio_gpios, 0, __VA_ARGS__)
-#define DT_N_S_dht22_P_dio_gpios_LEN 1
-#define DT_N_S_dht22_P_dio_gpios_EXISTS 1
-#define DT_N_S_dht22_P_dht22 1
-#define DT_N_S_dht22_P_dht22_EXISTS 1
-#define DT_N_S_dht22_P_status "okay"
-#define DT_N_S_dht22_P_status_STRING_TOKEN okay
-#define DT_N_S_dht22_P_status_STRING_UPPER_TOKEN OKAY
-#define DT_N_S_dht22_P_status_ENUM_IDX 1
-#define DT_N_S_dht22_P_status_ENUM_TOKEN okay
-#define DT_N_S_dht22_P_status_ENUM_UPPER_TOKEN OKAY
-#define DT_N_S_dht22_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht22, status, 0) \
-	fn(DT_N_S_dht22, status, 1) \
-	fn(DT_N_S_dht22, status, 2) \
-	fn(DT_N_S_dht22, status, 3)
-#define DT_N_S_dht22_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht22, status, 0, __VA_ARGS__) \
-	fn(DT_N_S_dht22, status, 1, __VA_ARGS__) \
-	fn(DT_N_S_dht22, status, 2, __VA_ARGS__) \
-	fn(DT_N_S_dht22, status, 3, __VA_ARGS__)
-#define DT_N_S_dht22_P_status_EXISTS 1
-#define DT_N_S_dht22_P_compatible {"aosong,dht"}
-#define DT_N_S_dht22_P_compatible_IDX_0 "aosong,dht"
-#define DT_N_S_dht22_P_compatible_IDX_0_EXISTS 1
-#define DT_N_S_dht22_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht22, compatible, 0)
-#define DT_N_S_dht22_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht22, compatible, 0, __VA_ARGS__)
-#define DT_N_S_dht22_P_compatible_LEN 1
-#define DT_N_S_dht22_P_compatible_EXISTS 1
-#define DT_N_S_dht22_P_label "DHT22"
-#define DT_N_S_dht22_P_label_STRING_TOKEN DHT22
-#define DT_N_S_dht22_P_label_STRING_UPPER_TOKEN DHT22
-#define DT_N_S_dht22_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht22, label, 0) \
-	fn(DT_N_S_dht22, label, 1) \
-	fn(DT_N_S_dht22, label, 2) \
-	fn(DT_N_S_dht22, label, 3) \
-	fn(DT_N_S_dht22, label, 4)
-#define DT_N_S_dht22_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht22, label, 0, __VA_ARGS__) \
-	fn(DT_N_S_dht22, label, 1, __VA_ARGS__) \
-	fn(DT_N_S_dht22, label, 2, __VA_ARGS__) \
-	fn(DT_N_S_dht22, label, 3, __VA_ARGS__) \
-	fn(DT_N_S_dht22, label, 4, __VA_ARGS__)
-#define DT_N_S_dht22_P_label_EXISTS 1
-#define DT_N_S_dht22_P_wakeup_source 0
-#define DT_N_S_dht22_P_wakeup_source_EXISTS 1
-
-/*
  * Devicetree node: /soc/pin-controller@40020000/gpio@40020c00
  *
  * Node identifier: DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00
@@ -1406,7 +1201,7 @@
 #define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00_ORD 11
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00_ORD 9
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00_REQUIRES_ORDS \
@@ -1415,7 +1210,8 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00_SUPPORTS_ORDS \
-	12, /* /lcd_0 */ \
+	10, /* /dht11 */ \
+	11, /* /lcd_0 */ \
 	22, /* /leds/led_3 */ \
 	23, /* /leds/led_4 */ \
 	24, /* /leds/led_5 */ \
@@ -1503,6 +1299,107 @@
 #define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00_P_wakeup_source_EXISTS 1
 
 /*
+ * Devicetree node: /dht11
+ *
+ * Node identifier: DT_N_S_dht11
+ *
+ * Binding (compatible = aosong,dht):
+ *   $ZEPHYR_BASE/dts/bindings/sensor/aosong,dht.yaml
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_dht11_PATH "/dht11"
+
+/* Node's name with unit-address: */
+#define DT_N_S_dht11_FULL_NAME "dht11"
+
+/* Node parent (/) identifier: */
+#define DT_N_S_dht11_PARENT DT_N
+#define DT_N_S_dht11_FOREACH_CHILD(fn) 
+#define DT_N_S_dht11_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_dht11_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_dht11_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_dht11_ORD 10
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_dht11_REQUIRES_ORDS \
+	0, /* / */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_dht11_SUPPORTS_ORDS /* nothing */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_dht11_EXISTS 1
+#define DT_N_INST_0_aosong_dht DT_N_S_dht11
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_dht11_REG_NUM 0
+#define DT_N_S_dht11_IRQ_NUM 0
+#define DT_N_S_dht11_COMPAT_MATCHES_aosong_dht 1
+#define DT_N_S_dht11_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_dht11_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_dht11_P_dio_gpios_IDX_0_EXISTS 1
+#define DT_N_S_dht11_P_dio_gpios_IDX_0_PH DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020c00
+#define DT_N_S_dht11_P_dio_gpios_IDX_0_VAL_pin 7
+#define DT_N_S_dht11_P_dio_gpios_IDX_0_VAL_pin_EXISTS 1
+#define DT_N_S_dht11_P_dio_gpios_IDX_0_VAL_flags 17
+#define DT_N_S_dht11_P_dio_gpios_IDX_0_VAL_flags_EXISTS 1
+#define DT_N_S_dht11_P_dio_gpios_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht11, dio_gpios, 0)
+#define DT_N_S_dht11_P_dio_gpios_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht11, dio_gpios, 0, __VA_ARGS__)
+#define DT_N_S_dht11_P_dio_gpios_LEN 1
+#define DT_N_S_dht11_P_dio_gpios_EXISTS 1
+#define DT_N_S_dht11_P_dht22 0
+#define DT_N_S_dht11_P_dht22_EXISTS 1
+#define DT_N_S_dht11_P_status "okay"
+#define DT_N_S_dht11_P_status_STRING_TOKEN okay
+#define DT_N_S_dht11_P_status_STRING_UPPER_TOKEN OKAY
+#define DT_N_S_dht11_P_status_ENUM_IDX 1
+#define DT_N_S_dht11_P_status_ENUM_TOKEN okay
+#define DT_N_S_dht11_P_status_ENUM_UPPER_TOKEN OKAY
+#define DT_N_S_dht11_P_status_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht11, status, 0) \
+	fn(DT_N_S_dht11, status, 1) \
+	fn(DT_N_S_dht11, status, 2) \
+	fn(DT_N_S_dht11, status, 3)
+#define DT_N_S_dht11_P_status_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht11, status, 0, __VA_ARGS__) \
+	fn(DT_N_S_dht11, status, 1, __VA_ARGS__) \
+	fn(DT_N_S_dht11, status, 2, __VA_ARGS__) \
+	fn(DT_N_S_dht11, status, 3, __VA_ARGS__)
+#define DT_N_S_dht11_P_status_EXISTS 1
+#define DT_N_S_dht11_P_compatible {"aosong,dht"}
+#define DT_N_S_dht11_P_compatible_IDX_0 "aosong,dht"
+#define DT_N_S_dht11_P_compatible_IDX_0_EXISTS 1
+#define DT_N_S_dht11_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht11, compatible, 0)
+#define DT_N_S_dht11_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht11, compatible, 0, __VA_ARGS__)
+#define DT_N_S_dht11_P_compatible_LEN 1
+#define DT_N_S_dht11_P_compatible_EXISTS 1
+#define DT_N_S_dht11_P_label "DHT11"
+#define DT_N_S_dht11_P_label_STRING_TOKEN DHT11
+#define DT_N_S_dht11_P_label_STRING_UPPER_TOKEN DHT11
+#define DT_N_S_dht11_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_dht11, label, 0) \
+	fn(DT_N_S_dht11, label, 1) \
+	fn(DT_N_S_dht11, label, 2) \
+	fn(DT_N_S_dht11, label, 3) \
+	fn(DT_N_S_dht11, label, 4)
+#define DT_N_S_dht11_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_dht11, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_dht11, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_dht11, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_dht11, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_dht11, label, 4, __VA_ARGS__)
+#define DT_N_S_dht11_P_label_EXISTS 1
+#define DT_N_S_dht11_P_wakeup_source 0
+#define DT_N_S_dht11_P_wakeup_source_EXISTS 1
+
+/*
  * Devicetree node: /lcd_0
  *
  * Node identifier: DT_N_S_lcd_0
@@ -1528,12 +1425,12 @@
 #define DT_N_S_lcd_0_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_lcd_0_ORD 12
+#define DT_N_S_lcd_0_ORD 11
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_lcd_0_REQUIRES_ORDS \
 	0, /* / */ \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_lcd_0_SUPPORTS_ORDS /* nothing */
@@ -1613,7 +1510,7 @@
 #define DT_N_S_memory_20000000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_memory_20000000_ORD 13
+#define DT_N_S_memory_20000000_ORD 12
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_memory_20000000_REQUIRES_ORDS \
@@ -1686,7 +1583,7 @@
 #define DT_N_S_clocks_S_clk_hsi_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_clocks_S_clk_hsi_ORD 14
+#define DT_N_S_clocks_S_clk_hsi_ORD 13
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_clocks_S_clk_hsi_REQUIRES_ORDS \
@@ -1739,7 +1636,7 @@
 #define DT_N_S_clocks_S_clk_lse_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_clocks_S_clk_lse_ORD 15
+#define DT_N_S_clocks_S_clk_lse_ORD 14
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_clocks_S_clk_lse_REQUIRES_ORDS \
@@ -1792,7 +1689,7 @@
 #define DT_N_S_clocks_S_clk_lsi_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_clocks_S_clk_lsi_ORD 16
+#define DT_N_S_clocks_S_clk_lsi_ORD 15
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_clocks_S_clk_lsi_REQUIRES_ORDS \
@@ -1839,7 +1736,7 @@
 #define DT_N_S_cpus_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_cpus_S_cpu_0, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_cpus_ORD 17
+#define DT_N_S_cpus_ORD 16
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_cpus_REQUIRES_ORDS \
@@ -1847,7 +1744,7 @@
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_cpus_SUPPORTS_ORDS \
-	18, /* /cpus/cpu@0 */
+	17, /* /cpus/cpu@0 */
 
 /* Existence and alternate IDs: */
 #define DT_N_S_cpus_EXISTS 1
@@ -1888,11 +1785,11 @@
 #define DT_N_S_cpus_S_cpu_0_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_cpus_S_cpu_0_ORD 18
+#define DT_N_S_cpus_S_cpu_0_ORD 17
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_cpus_S_cpu_0_REQUIRES_ORDS \
-	17, /* /cpus */
+	16, /* /cpus */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_cpus_S_cpu_0_SUPPORTS_ORDS /* nothing */
@@ -1955,7 +1852,7 @@
 #define DT_N_S_gpio_keys_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) fn(DT_N_S_gpio_keys_S_button, __VA_ARGS__) 
 
 /* Node's dependency ordinal: */
-#define DT_N_S_gpio_keys_ORD 19
+#define DT_N_S_gpio_keys_ORD 18
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_gpio_keys_REQUIRES_ORDS \
@@ -1988,6 +1885,109 @@
 #define DT_N_S_gpio_keys_P_compatible_EXISTS 1
 
 /*
+ * Devicetree node: /soc/pin-controller@40020000/gpio@40020000
+ *
+ * Node identifier: DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
+ *
+ * Binding (compatible = st,stm32-gpio):
+ *   $ZEPHYR_BASE/dts/bindings/gpio/st,stm32-gpio.yaml
+ *
+ * (Descriptions have moved to the Devicetree Bindings Index
+ * in the documentation.)
+ */
+
+/* Node's full path: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_PATH "/soc/pin-controller@40020000/gpio@40020000"
+
+/* Node's name with unit-address: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FULL_NAME "gpio@40020000"
+
+/* Node parent (/soc/pin-controller@40020000) identifier: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_PARENT DT_N_S_soc_S_pin_controller_40020000
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD(fn) 
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD_VARGS(fn, ...) 
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD_STATUS_OKAY(fn) 
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_FOREACH_CHILD_STATUS_OKAY_VARGS(fn, ...) 
+
+/* Node's dependency ordinal: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_ORD 19
+
+/* Ordinals for what this node depends on directly: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REQUIRES_ORDS \
+	4, /* /soc/pin-controller@40020000 */ \
+	8, /* /soc/rcc@40023800 */
+
+/* Ordinals for what depends directly on this node: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_SUPPORTS_ORDS \
+	20, /* /gpio_keys/button */
+
+/* Existence and alternate IDs: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_EXISTS 1
+#define DT_N_INST_0_st_stm32_gpio DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
+#define DT_N_NODELABEL_gpioa      DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000
+
+/* Macros for properties that are special in the specification: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_NUM 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_IDX_0_VAL_ADDRESS 1073872896 /* 0x40020000 */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_REG_IDX_0_VAL_SIZE 1024 /* 0x400 */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_IRQ_NUM 0
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_COMPAT_MATCHES_st_stm32_gpio 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_STATUS_okay 1
+
+/* Pin control (pinctrl-<i>, pinctrl-names) properties: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_PINCTRL_NUM 0
+
+/* Generic property macros: */
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg {1073872896 /* 0x40020000 */, 1024 /* 0x400 */}
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_0 1073872896
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_1 1024
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_IDX_1_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 0) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 1)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 0, __VA_ARGS__) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, reg, 1, __VA_ARGS__)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_reg_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label "GPIOA"
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_STRING_TOKEN GPIOA
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_STRING_UPPER_TOKEN GPIOA
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 0) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 1) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 2) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 3) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 4)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 0, __VA_ARGS__) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 1, __VA_ARGS__) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 2, __VA_ARGS__) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 3, __VA_ARGS__) \
+	fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, label, 4, __VA_ARGS__)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_label_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_PH DT_N_S_soc_S_rcc_40023800
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bus 0
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bus_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bits 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_IDX_0_VAL_bits_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, clocks, 0)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, clocks, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_LEN 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_clocks_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_gpio_controller 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_gpio_controller_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_ngpios 32
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_ngpios_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible {"st,stm32-gpio"}
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_IDX_0 "st,stm32-gpio"
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_IDX_0_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_FOREACH_PROP_ELEM(fn) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, compatible, 0)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_FOREACH_PROP_ELEM_VARGS(fn, ...) fn(DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000, compatible, 0, __VA_ARGS__)
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_LEN 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_compatible_EXISTS 1
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_wakeup_source 0
+#define DT_N_S_soc_S_pin_controller_40020000_S_gpio_40020000_P_wakeup_source_EXISTS 1
+
+/*
  * Devicetree node: /gpio_keys/button
  *
  * Node identifier: DT_N_S_gpio_keys_S_button
@@ -2014,8 +2014,8 @@
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_gpio_keys_S_button_REQUIRES_ORDS \
-	9, /* /soc/pin-controller@40020000/gpio@40020000 */ \
-	19, /* /gpio_keys */
+	18, /* /gpio_keys */ \
+	19, /* /soc/pin-controller@40020000/gpio@40020000 */
 
 /* Ordinals for what depends directly on this node: */
 #define DT_N_S_gpio_keys_S_button_SUPPORTS_ORDS /* nothing */
@@ -2138,7 +2138,7 @@
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_S_led_3_REQUIRES_ORDS \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
 	21, /* /leds */
 
 /* Ordinals for what depends directly on this node: */
@@ -2216,7 +2216,7 @@
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_S_led_4_REQUIRES_ORDS \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
 	21, /* /leds */
 
 /* Ordinals for what depends directly on this node: */
@@ -2294,7 +2294,7 @@
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_S_led_5_REQUIRES_ORDS \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
 	21, /* /leds */
 
 /* Ordinals for what depends directly on this node: */
@@ -2372,7 +2372,7 @@
 
 /* Ordinals for what this node depends on directly: */
 #define DT_N_S_leds_S_led_6_REQUIRES_ORDS \
-	11, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
+	9, /* /soc/pin-controller@40020000/gpio@40020c00 */ \
 	21, /* /leds */
 
 /* Ordinals for what depends directly on this node: */
@@ -29058,8 +29058,8 @@
 #define DT_FOREACH_OKAY_VARGS_zephyr_lcd(fn, ...) fn(DT_N_S_lcd_0, __VA_ARGS__)
 #define DT_FOREACH_OKAY_INST_zephyr_lcd(fn) fn(0)
 #define DT_FOREACH_OKAY_INST_VARGS_zephyr_lcd(fn, ...) fn(0, __VA_ARGS__)
-#define DT_FOREACH_OKAY_aosong_dht(fn) fn(DT_N_S_dht22)
-#define DT_FOREACH_OKAY_VARGS_aosong_dht(fn, ...) fn(DT_N_S_dht22, __VA_ARGS__)
+#define DT_FOREACH_OKAY_aosong_dht(fn) fn(DT_N_S_dht11)
+#define DT_FOREACH_OKAY_VARGS_aosong_dht(fn, ...) fn(DT_N_S_dht11, __VA_ARGS__)
 #define DT_FOREACH_OKAY_INST_aosong_dht(fn) fn(0)
 #define DT_FOREACH_OKAY_INST_VARGS_aosong_dht(fn, ...) fn(0, __VA_ARGS__)
 

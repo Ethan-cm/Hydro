@@ -1521,11 +1521,10 @@ zephyr_udc0: &usbotg_fs {
  status = "okay";
 };
 / {
- dht22 {
+ dht11 {
   compatible = "aosong,dht";
   status = "okay";
-  label = "DHT22";
-  dio-gpios = <&gpioa 1 ((1 << 4) | (1 << 0))>;
-  dht22;
+  label = "DHT11";
+  dio-gpios = <&gpiod 7 ((1 << 4) | (1 << 0))>;
  };
 };

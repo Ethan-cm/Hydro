@@ -1462,11 +1462,10 @@
 		label = "LCD_0";
 		output-gpios = < &gpiod 0xd 0x0 >;
 	};
-	dht22 {
+	dht11 {
 		compatible = "aosong,dht";
 		status = "okay";
-		label = "DHT22";
-		dio-gpios = < &gpioa 0x1 0x11 >;
-		dht22;
+		label = "DHT11";
+		dio-gpios = < &gpiod 0x7 0x11 >;
 	};
 };
